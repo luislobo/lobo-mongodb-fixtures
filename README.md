@@ -1,5 +1,7 @@
-pow-mongodb-fixtures
+mongodb-fixtures
 =================
+
+This is a forked version of pow-mongodb-fixtures
 
 Simple fixture loader for MongoDB on NodeJS.  Makes managing relationships between documents easier.
 
@@ -189,6 +191,11 @@ Installation
 
 Changelog
 ---------
+###0.10.0
+- Update mongodb driver to 1.4.31
+- fix mongo db minor version
+- replace underscore to lodash
+- rename project to mongodb-fixtures
 
 ###0.10.0
 - Update mongodb driver to 1.3.x
