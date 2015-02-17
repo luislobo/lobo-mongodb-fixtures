@@ -1,11 +1,12 @@
 {
-  "author": "Charles Davison <charlie@powmedia.co.uk>",
-  "name": "mongodb-fixtures",
+  "author": "Loïc Calvy <lc@coorpacademy.com>",
+  "name": "mongo-fixme",
   "description": "Easy JSON fixture loading for MongoDB.  Makes managing document relationships easier. This is a forked version of pow-mongodb-fixtures",
   "version": "0.10.1",
+  "keywords": ["mongodb", "mongo", "json", "fixtures"],
   "repository": {
       "type" : "git", 
-      "url" : "http://github.com/CoorpAcademy/mongodb-fixtures.git"
+      "url" : "http://github.com/CoorpAcademy/mongo-fixme.git"
   },
   "bin": {
     "mongofixtures": "./bin/mongofixtures"
