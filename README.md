@@ -1,9 +1,9 @@
 mongodb-fixtures
 =================
 
-[![Build Status](https://travis-ci.org/CoorpAcademy/mongo-fixtures.svg?branch=master)](https://travis-ci.org/CoorpAcademy/mongo-fixtures)
+[![Build Status](https://travis-ci.org/CoorpAcademy/mongo-fixme.svg?branch=master)](https://travis-ci.org/CoorpAcademy/mongo-fixme)
 
-This is a forked version of mongo-fixtures
+This is a forked version of mongo-fixme
 
 Simple fixture loader for MongoDB on NodeJS.  Makes managing relationships between documents easier.
 
@@ -32,7 +32,7 @@ With the file below, 3 documents will be inserted into the 'users' collection an
 You can also load fixtures as an object where each document is keyed, in case you want to reference another document. This example uses the included `createObjectId` helper:
 
     //users.js
-    var id = require('mongo-fixtures').createObjectId;
+    var id = require('mongo-fixme').createObjectId;
 
     var users = exports.users = {
         user1: {
@@ -56,7 +56,7 @@ CLI usage
 
 A CLI program is included for quickly loading fixture files. To use it install the module globally:
 
-    npm install mongo-fixtures -g
+    npm install mongo-fixme -g
 
 Then use the program to install a file or directory:
 
@@ -83,9 +83,9 @@ Options:
 
 Usage:
 
-    var fixtures = require('mongo-fixtures').connect('dbname');
+    var fixtures = require('mongo-fixme').connect('dbname');
     
-    var fixtures2 = require('mongo-fixtures').connect('dbname', {
+    var fixtures2 = require('mongo-fixme').connect('dbname', {
       host: 'http://dbhost.com/',
       port: 1234
     });
@@ -96,7 +96,7 @@ load(data, callback)
 
 Adds documents to the relevant collection. If the collection doesn't exist it will be created first.
 
-    var fixtures = require('mongo-fixtures').connect('mydb');
+    var fixtures = require('mongo-fixme').connect('mydb');
     
     //Objects
     fixtures.load({
@@ -188,7 +188,7 @@ Modifiers are chained in the order in which they're added. For example:
 Installation
 ------------
 
-	npm install mongo-fixtures
+	npm install mongo-fixme
 
 
 Changelog

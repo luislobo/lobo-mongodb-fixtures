@@ -1,5 +1,5 @@
 var fixtures = require('../src/index.js'),
-    dbName = 'mongo-fixtures-test';
+    dbName = 'mongo-fixme-test';
 
 exports['closeDb'] = function(test) {
 	var db = fixtures.connect(dbName);

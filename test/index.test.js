@@ -7,7 +7,7 @@ var fixtures = require('../src/index.js'),
 	async = require('async'),
 	_ = require('lodash');
 
-var dbName = 'mongo-fixtures-test',
+var dbName = 'mongo-fixme-test',
 	loader = fixtures.connect(dbName),
 	server = new mongo.Db(dbName, new mongo.Server('127.0.0.1', 27017), {safe:true}),
 	db;
@@ -77,7 +77,7 @@ exports['connect with dbName'] = function(test) {
 
   var options = loader.options;
 
-  test.same(options.db, 'mongo-fixtures-test');
+  test.same(options.db, 'mongo-fixme-test');
   test.same(options.host, 'localhost');
   test.same(options.port, 27017);
   test.same(options.user, null);
