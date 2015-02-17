@@ -5,7 +5,7 @@ var fs       = require('fs'),
     mongo    = require('mongodb'),
     ObjectID = require('bson').ObjectID,
     async    = require('async'),
-    _        = require('underscore'),
+    _        = require('lodash'),
     basePath = path.dirname(module.parent.filename);
 
 
@@ -32,7 +32,7 @@ exports.createObjectId = function(id) {
  */
 exports.connect = function(db, options) {
   return new Loader(db, options);
-}
+};
 
 
 
@@ -155,11 +155,8 @@ Loader.prototype.clear = function(collectionNames, cb) {
             var fullName = nameObj.name,
                 parts = fullName.split('.');
 
-            //Remove DB name
-            parts.shift();
-
-            //Skip system collections
-            if (parts[0] == 'system' || parts[0] == 'local') return;
+          //Skip system collections
+          if (parts[0] == 'system' || parts[0] == 'local') return;
 
             return parts.join('.');
           });
