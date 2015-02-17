@@ -16,5 +16,5 @@ deploy:
   api_key:
     secure: hVU5GQdV1M9XAESglTbzbncv5efjsL7xGzUQK4M3s0cZ0DdWcrScLHGjMFKZD5Obs/fd6HetkDTxeryBcCbGzZMFbcRMBpFxhVsPWO9O0a0RJnLDgaIqzlyBb/JXi6Srg9KiU4hyaxJd9n+Yl9cMDGAfjzaEmo28QkRgo7kRBdM=
   on:
-    repo: CoorpAcademy/mongodb-fixtures
+    repo: CoorpAcademy/mongo-fixtures
     branch: master
