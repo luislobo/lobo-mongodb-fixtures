@@ -23,7 +23,7 @@
   },
   "devDependencies": {
     "nodeunit": "*"
-  }
+  },
   "main": "src/index",
   "scripts": {
     "test": "node_modules/.bin/nodeunit test"
