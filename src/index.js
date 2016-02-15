@@ -193,7 +193,7 @@ Loader.prototype.clear = function(collectionNames, cb) {
           var collection = results.db.collection(name);
 
           collection.drop(function(err) {
-            err = (err && err === 'ns not found') ? null : err;
+            err = (err && err.message === 'ns not found') ? null : err;
             cb(err);
           });
         }, cb);
