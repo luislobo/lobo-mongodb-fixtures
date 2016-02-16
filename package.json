@@ -5,7 +5,7 @@
   "version": "0.13.1",
   "repository": {
     "type": "git",
-    "url": "http://github.com/powmedia/pow-mongodb-fixtures.git"
+    "url": "http://github.com/levelap-dev/pow-mongodb-fixtures.git"
   },
   "bin": {
     "mongofixtures": "./bin/mongofixtures"
@@ -16,7 +16,7 @@
   "dependencies": {
     "async": "0.1.15",
     "bson": ">=0.0.4",
-    "mongodb": "^2.1.7",
+    "mongodb": "2.1.7",
     "nodeunit": "^0.9.1",
     "optimist": "0.3.5",
     "lodash": "~3.10.0"
