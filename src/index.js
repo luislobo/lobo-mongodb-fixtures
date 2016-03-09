@@ -319,7 +319,6 @@ var _close = function(loader, cb) {
  * @api private
  */
 var _loadData = function(loader, data, cb) {
-  console.log("LOAD DATA!");
     cb = cb || noop;
 
     var collectionNames = Object.keys(data);
