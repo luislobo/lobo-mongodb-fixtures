@@ -191,9 +191,7 @@ Loader.prototype.clear = function(collectionNames, cb) {
       if (results.collectionNames) {
         async.forEach(results.collectionNames, function(name, cb) {
           var collection = results.db.collection(name);
-          var indexes = db.collection.getIndexKeys().splice(1);
-          collection.drop(cb);
-          indexes.forEach(function(el){ db.collection.ensureIndex(el) });
+          collection.remove({});
         }, cb);
       } else { cb(); }
     }
