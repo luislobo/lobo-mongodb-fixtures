@@ -191,7 +191,7 @@ Loader.prototype.clear = function(collectionNames, cb) {
       if (results.collectionNames) {
         async.forEach(results.collectionNames, function(name, cb) {
           var collection = results.db.collection(name);
-          collection.remove({});
+          collection.remove({},null,cb);
         }, cb);
       } else { cb(); }
     }
@@ -319,6 +319,7 @@ var _close = function(loader, cb) {
  * @api private
  */
 var _loadData = function(loader, data, cb) {
+  console.log("LOAD DATA!");
     cb = cb || noop;
 
     var collectionNames = Object.keys(data);
