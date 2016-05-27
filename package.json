@@ -15,13 +15,14 @@
   },
   "dependencies": {
     "async": "^1.4.0",
+    "bson": "^0.4.7",
     "mongodb": "^2.0.40",
-    "bson": ">=0.0.4",
-    "optimist": "^0.3.5",
     "nodeunit": "^0.9.1",
+    "optimist": "^0.6.1",
+    "underscore": "^1.8.3"
   },
   "devDependencies": {
-    "nodeunit": "^0.9.1"
+    "nodeunit": "*"
   },
   "main": "src/index",
   "scripts": {
