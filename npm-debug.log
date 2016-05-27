@@ -1,0 +1,101 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/Users/joe/.nvm/versions/io.js/v2.5.0/bin/iojs',
+1 verbose cli   '/Users/joe/.nvm/versions/io.js/v2.5.0/bin/npm',
+1 verbose cli   'publish' ]
+2 info using npm@2.13.4
+3 info using node@v2.5.0
+4 verbose publish [ '.' ]
+5 silly cache add args [ '.', null ]
+6 verbose cache add spec .
+7 silly cache add parsed spec { raw: '.',
+7 silly cache add   scope: null,
+7 silly cache add   name: null,
+7 silly cache add   rawSpec: '.',
+7 silly cache add   spec: '/Users/joe/Projects/AppPress/pow-mongodb-fixtures',
+7 silly cache add   type: 'directory' }
+8 verbose addLocalDirectory /Users/joe/.npmrcs/profiles/app_press/cache/pow-mongodb-fixtures/0.12.0/package.tgz not in flight; packing
+9 verbose tar pack [ '/Users/joe/.npmrcs/profiles/app_press/cache/pow-mongodb-fixtures/0.12.0/package.tgz',
+9 verbose tar pack   '/Users/joe/Projects/AppPress/pow-mongodb-fixtures' ]
+10 verbose tarball /Users/joe/.npmrcs/profiles/app_press/cache/pow-mongodb-fixtures/0.12.0/package.tgz
+11 verbose folder /Users/joe/Projects/AppPress/pow-mongodb-fixtures
+12 info prepublish pow-mongodb-fixtures@0.12.0
+13 verbose addLocalTarball adding from inside cache /Users/joe/.npmrcs/profiles/app_press/cache/pow-mongodb-fixtures/0.12.0/package.tgz
+14 silly cache afterAdd pow-mongodb-fixtures@0.12.0
+15 verbose afterAdd /Users/joe/.npmrcs/profiles/app_press/cache/pow-mongodb-fixtures/0.12.0/package/package.json not in flight; writing
+16 verbose afterAdd /Users/joe/.npmrcs/profiles/app_press/cache/pow-mongodb-fixtures/0.12.0/package/package.json written
+17 silly publish { author: { name: 'Charles Davison', email: 'charlie@powmedia.co.uk' },
+17 silly publish   name: 'pow-mongodb-fixtures',
+17 silly publish   description: 'Easy JSON fixture loading for MongoDB.  Makes managing document relationships easier.',
+17 silly publish   version: '0.12.0',
+17 silly publish   repository:
+17 silly publish    { type: 'git',
+17 silly publish      url: 'git+ssh://git@github.com/powmedia/pow-mongodb-fixtures.git' },
+17 silly publish   bin: { mongofixtures: './bin/mongofixtures' },
+17 silly publish   engines: { node: '>= 0.4.1' },
+17 silly publish   dependencies:
+17 silly publish    { async: '^1.4.0',
+17 silly publish      mongodb: '^2.0.40',
+17 silly publish      optimist: '^0.3.5',
+17 silly publish      underscore: '^1.8.3' },
+17 silly publish   devDependencies: { nodeunit: '^0.9.1' },
+17 silly publish   main: 'src/index',
+17 silly publish   scripts: { test: 'nodeunit test' },
+17 silly publish   readme: 'pow-mongodb-fixtures\n=================\n\nSimple fixture loader for MongoDB on NodeJS.  Makes managing relationships between documents easier.\n\nFixtures can be in one file, or divided up into separate files for organisation \n(e.g. one file per model)\n\nThe fixture files must export objects which are keyed by the MongoDB collection name, each\ncontaining the data for documents within that.\n\nFOR EXAMPLE:\nWith the file below, 3 documents will be inserted into the \'users\' collection and 2 into the \'businesses\' collection:\n\n    //fixtures.js\n    exports.users = [\n        { name: \'Gob\' },\n        { name: \'Buster\' },\n        { name: \'Steve Holt\' }\n    ];\n\n    exports.businesses = [\n        { name: \'The Banana Stand\' },\n        { name: \'Bluth Homes\' }\n    ];\n\n\nYou can also load fixtures as an object where each document is keyed, in case you want to reference another document. This example uses the included `createObjectId` helper:\n\n    //users.js\n    var id = require(\'pow-mongodb-fixtures\').createObjectId;\n\n    var users = exports.users = {\n        user1: {\n            _id: id(),\n            name: \'Michael\'\n        },\n        user2: {\n            _id: id(),\n            name: \'George Michael\',\n            father: users.user1._id\n        },\n        user3: {\n            _id: id(\'4ed2b809d7446b9a0e000014\'),\n            name: \'Tobias\'\n        }\n    }\n\n\nCLI usage\n=========\n\nA CLI program is included for quickly loading fixture files. To use it install the module globally:\n\n    npm install pow-mongodb-fixtures -g\n\nThen use the program to install a file or directory:\n\n    mongofixtures <dbname> <fixture file>\n\n    mongofixtures appdb fixtures/users.js\n\n\nAPI\n===\n\nconnect(dbname, options)\n------------------------\n\nReturns a new Loader instance, configured to interact with a certain database.\n\nOptions:\n\n- host (Default: localhost)\n- port (Default: 27017)\n- user\n- pass\n- safe (Default: false)\n\nUsage:\n\n    var fixtures = require(\'pow-mongodb-fixtures\').connect(\'dbname\');\n    \n    var fixtures2 = require(\'pow-mongodb-fixtures\').connect(\'dbname\', {\n      host: \'http://dbhost.com/\',\n      port: 1234\n    });\n\n\nload(data, callback)\n--------------------\n\nAdds documents to the relevant collection. If the collection doesn\'t exist it will be created first.\n\n    var fixtures = require(\'pow-mongodb-fixtures\').connect(\'mydb\');\n    \n    //Objects\n    fixtures.load({\n        users: [\n            { name: \'Maeby\' },\n            { name: \'George Michael\' }\n        ]\n    }, callback);\n\n    //Files\n    fixtures.load(__dirname + \'/fixtures/users.js\', cb);\n\n    //Directories (loads all files in the directory)\n    fixtures.load(__dirname + \'/fixtures\', callback);\n\n\nclear(callback)\n---------------\n\nClears existing data.\n\n    fixtures.clear(function(err) {\n        //Drops the database\n    });\n    \n    fixtures.clear(\'foo\', function(err) {\n        //Clears the \'foo\' collection\n    });\n    \n    fixtures.clear([\'foo\', \'bar\'], function(err) {\n        //Clears the \'foo\' and \'bar\' collections\n    });\n    \n\nclearAllAndLoad(data, callback)\n----------------------------\n\nDrops the database (clear all collections) and loads data.\n\n\nclearAndLoad(data, callback)\n----------------------------\n\nClears the collections that have documents in the `data` that is passed in, and then loads data.\n\n    var data = { users: [...] };\n    \n    fixtures.clearAndLoad(data, function(err) {\n        //Clears only the \'users\' collection then loads data\n    });\n    \n\naddModifier(callback)\n----------------------------\n\nAdds a modifier (function) which gets called for each document that is to be inserted. The signature of this function\nshould be:\n\n    (collectionName, document, callback)\n\n* collectionName - name of collection\n* document - the document which is to be inserted\n* callback - function with signature (err, modifiedDocument). This should be called with the modified document.\n\nModifiers are chained in the order in which they\'re added. For example:\n\n\n    var data = { users: [...] };\n\n    // this modifier will get called first\n    fixtures.addModifier(function(collectionName, doc, cb) {\n      doc.createdAt = new Date();\n\n      cb(null, doc);\n    });\n\n    // this modifier will get called second with the result from the first modifier call\n    fixtures.addModifier(function(collectionName, doc, cb) {\n      doc.updatedAt = new Date();\n\n      cb(null, doc);\n    });\n\n    fixtures.load(data, function(err) {\n        // each loaded data item will have the createdAt and updatedAt keys set.\n    });\n\n\nInstallation\n------------\n\n\tnpm install pow-mongodb-fixtures\n\n\nChangelog\n---------\n\n###0.10.0\n- Update mongodb driver to 1.3.x\n- Add ability to connect with URI\n- Make safe mode the default\n\n###0.8.1\n- Add mongofixtures CLI program\n\n###0.7.1\n- Add \'safe\' option (donnut)\n\n###0.7.0\n- Add user and password options for connecting to authenticated/remote DBs\n\n###0.6.4\n- Add username and password connect options\n\n###0.6.3\n- Make clear be safe\n\n###0.6.2\n- Windows fixes (samitny)\n\n###0.6.1\n- Ignore subdirectories (hiddentao)\n',
+17 silly publish   readmeFilename: 'README.md',
+17 silly publish   gitHead: '7385b07b3603db36b56c38523e5d15c672637cdb',
+17 silly publish   bugs: { url: 'https://github.com/powmedia/pow-mongodb-fixtures/issues' },
+17 silly publish   homepage: 'https://github.com/powmedia/pow-mongodb-fixtures#readme',
+17 silly publish   _id: 'pow-mongodb-fixtures@0.12.0',
+17 silly publish   _shasum: 'c65a09917148a01f80c374b2c4bbebc0dd50635a',
+17 silly publish   _from: '.' }
+18 verbose getPublishConfig undefined
+19 silly mapToRegistry name pow-mongodb-fixtures
+20 silly mapToRegistry using default registry
+21 silly mapToRegistry registry https://npm.app-press.com/
+22 silly mapToRegistry uri https://npm.app-press.com/pow-mongodb-fixtures
+23 verbose publish registryBase https://npm.app-press.com/
+24 silly publish uploading /Users/joe/.npmrcs/profiles/app_press/cache/pow-mongodb-fixtures/0.12.0/package.tgz
+25 verbose request uri https://npm.app-press.com/pow-mongodb-fixtures
+26 verbose request always-auth set; sending authorization
+27 info attempt registry request try #1 at 18:42:43
+28 verbose request id 1d8857fc716e8f1b
+29 http request PUT https://npm.app-press.com/pow-mongodb-fixtures
+30 http 409 https://npm.app-press.com/pow-mongodb-fixtures
+31 verbose headers { server: 'nginx/1.9.3',
+31 verbose headers   date: 'Thu, 13 Aug 2015 01:42:12 GMT',
+31 verbose headers   'content-type': 'application/json; charset=utf-8',
+31 verbose headers   'content-length': '48',
+31 verbose headers   connection: 'keep-alive',
+31 verbose headers   'x-powered-by': 'Sinopia/0.8.2',
+31 verbose headers   vary: 'Accept-Encoding',
+31 verbose headers   'x-status-cat': 'http://flic.kr/p/aV6jzz' }
+32 verbose request invalidating /Users/joe/.npmrcs/profiles/app_press/cache/npm.app-press.com/pow-mongodb-fixtures on PUT
+33 verbose request uri https://npm.app-press.com/pow-mongodb-fixtures?write=true
+34 verbose request always-auth set; sending authorization
+35 info attempt registry request try #1 at 18:42:44
+36 http request GET https://npm.app-press.com/pow-mongodb-fixtures?write=true
+37 http 200 https://npm.app-press.com/pow-mongodb-fixtures?write=true
+38 verbose stack Error: cannot modify pre-existing version
+38 verbose stack     at conflictError (/Users/joe/.nvm/versions/io.js/v2.5.0/lib/node_modules/npm/node_modules/npm-registry-client/lib/publish.js:182:11)
+38 verbose stack     at CachingRegistryClient.putNext (/Users/joe/.nvm/versions/io.js/v2.5.0/lib/node_modules/npm/node_modules/npm-registry-client/lib/publish.js:145:15)
+38 verbose stack     at /Users/joe/.nvm/versions/io.js/v2.5.0/lib/node_modules/npm/node_modules/npm-registry-client/lib/publish.js:128:15
+38 verbose stack     at /Users/joe/.nvm/versions/io.js/v2.5.0/lib/node_modules/npm/lib/cache/caching-client.js:52:8
+38 verbose stack     at f (/Users/joe/.nvm/versions/io.js/v2.5.0/lib/node_modules/npm/node_modules/once/once.js:17:25)
+38 verbose stack     at /Users/joe/.nvm/versions/io.js/v2.5.0/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:68:16
+38 verbose stack     at f (/Users/joe/.nvm/versions/io.js/v2.5.0/lib/node_modules/npm/node_modules/once/once.js:17:25)
+38 verbose stack     at CachingRegistryClient.<anonymous> (/Users/joe/.nvm/versions/io.js/v2.5.0/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:255:12)
+38 verbose stack     at /Users/joe/.nvm/versions/io.js/v2.5.0/lib/node_modules/npm/node_modules/npm-registry-client/lib/request.js:176:7
+38 verbose stack     at Gunzip.onEnd (zlib.js:227:5)
+39 verbose pkgid pow-mongodb-fixtures
+40 verbose cwd /Users/joe/Projects/AppPress/pow-mongodb-fixtures
+41 error Darwin 14.4.0
+42 error argv "/Users/joe/.nvm/versions/io.js/v2.5.0/bin/iojs" "/Users/joe/.nvm/versions/io.js/v2.5.0/bin/npm" "publish"
+43 error node v2.5.0
+44 error npm  v2.13.4
+45 error code EPUBLISHCONFLICT
+46 error publish fail Cannot publish over existing version.
+46 error publish fail Update the 'version' field in package.json and try again.
+46 error publish fail
+46 error publish fail To automatically increment version numbers, see:
+46 error publish fail     npm help version
+47 verbose exit [ 1, true ]
