@@ -1,28 +1,29 @@
 {
   "author": "Charles Davison <charlie@powmedia.co.uk>",
-  "name": "pow-mongodb-fixtures",
-  "description": "Easy JSON fixture loading for MongoDB.  Makes managing document relationships easier.",
-  "version": "0.13.0",
+  "name": "lobo-mongodb-fixtures",
+  "description": "Easy JSON fixture loading for MongoDB.  Makes managing document relationships easier. MERGES ALL FORKS OF `pow-mongodb-fixtures` INTO THIS ONE",
+  "version": "1.0.0",
   "repository": {
     "type": "git",
-    "url": "http://github.com/powmedia/pow-mongodb-fixtures.git"
+    "url": "http://github.com/luislobo/lobo-mongodb-fixtures.git"
   },
   "bin": {
     "mongofixtures": "./bin/mongofixtures"
   },
   "engines": {
-    "node": ">= 0.4.1"
+    "node": ">= 0.10.x",
+    "npm": "2.1.x"
   },
   "dependencies": {
-    "async": "^1.4.0",
-    "bson": "^0.4.7",
-    "mongodb": "^2.0.40",
-    "nodeunit": "^0.9.1",
-    "optimist": "^0.6.1",
-    "underscore": "^1.8.3"
+    "async": "~2.0.0-rc.5",
+    "bson": "~0.4.23",
+    "mongodb": "~2.1.20",
+    "nodeunit": "~0.9.1",
+    "optimist": "~0.6.1",
+    "lodash": "~4.13.1"
   },
   "devDependencies": {
-    "nodeunit": "*"
+    "nodeunit": "~0.9.1"
   },
   "main": "src/index",
   "scripts": {

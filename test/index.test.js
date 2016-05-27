@@ -5,11 +5,11 @@ var fixtures = require('../src/index.js'),
 	mongo = require('mongodb'),
   fs = require('fs'),
 	async = require('async'),
-	_ = require('underscore');
+	_ = require('lodash');
 
-var dbName = 'pow-mongodb-fixtures-test',
+var dbName = 'lobo-mongodb-fixtures-test',
 	loader = fixtures.connect(dbName),
-	server = new mongo.Db(dbName, new mongo.Server('127.0.0.1', 27017, {})),
+	server = new mongo.Db(dbName, new mongo.Server('127.0.0.1', 27017), {safe:true}),
 	db;
 	
 	
@@ -77,7 +77,7 @@ exports['connect with dbName'] = function(test) {
 
   var options = loader.options;
 
-  test.same(options.db, 'pow-mongodb-fixtures-test');
+  test.same(options.db, 'lobo-mongodb-fixtures-test');
   test.same(options.host, 'localhost');
   test.same(options.port, 27017);
   test.same(options.user, null);

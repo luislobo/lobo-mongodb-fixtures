@@ -1,7 +1,11 @@
-[![Build Status](https://travis-ci.org/powmedia/pow-mongodb-fixtures.svg?branch=master)](https://travis-ci.org/powmedia/pow-mongodb-fixtures)
+[![Build Status](https://travis-ci.org/luislobo/lobo-mongodb-fixtures.svg?branch=master)](https://travis-ci.org/luislobo/lobo-mongodb-fixtures)
 
-pow-mongodb-fixtures
+lobo-mongodb-fixtures
 =================
+
+[![Build Status](https://travis-ci.org/CoorpAcademy/mongo-fixme.svg?branch=master)](https://travis-ci.org/CoorpAcademy/mongo-fixme)
+
+This is a forked version of mongo-fixme
 
 Simple fixture loader for MongoDB on NodeJS.  Makes managing relationships between documents easier.
 
@@ -32,7 +36,7 @@ You can also load fixtures as an object where each document is keyed, in case yo
 
 ```js
 //users.js
-var id = require('pow-mongodb-fixtures').createObjectId;
+var id = require('lobo-mongodb-fixtures').createObjectId;
 
 var users = exports.users = {
 	user1: {
@@ -57,7 +61,7 @@ CLI usage
 A CLI program is included for quickly loading fixture files. To use it install the module globally:
 
 ```sh
-npm install pow-mongodb-fixtures -g
+npm install lobo-mongodb-fixtures -g
 ```
 
 Then use the program to install a file or directory:
@@ -89,9 +93,9 @@ Options:
 Usage:
 
 ```js
-var fixtures = require('pow-mongodb-fixtures').connect('dbname');
+var fixtures = require('lobo-mongodb-fixtures').connect('dbname');
 
-var fixtures2 = require('pow-mongodb-fixtures').connect('dbname', {
+var fixtures2 = require('lobo-mongodb-fixtures').connect('dbname', {
   	host: 'http://dbhost.com/',
   	port: 1234
 });
@@ -103,7 +107,7 @@ load(data, callback)
 Adds documents to the relevant collection. If the collection doesn't exist it will be created first.
 
 ```js
-var fixtures = require('pow-mongodb-fixtures').connect('mydb');
+var fixtures = require('lobo-mongodb-fixtures').connect('mydb');
 
 //Objects
 fixtures.load({
@@ -114,7 +118,7 @@ fixtures.load({
 }, callback);
 
 //Files
-fixtures.load(__dirname + '/fixtures/users.js', cb);
+fixtures.load(__dirname + '/fixtures/users.js', callback);
 
 //Directories (loads all files in the directory)
 fixtures.load(__dirname + '/fixtures', callback);
@@ -200,13 +204,17 @@ Installation
 ------------
 
 ```sh
-	npm install pow-mongodb-fixtures
+	npm install lobo-mongodb-fixtures
 ```
 
 Changelog
 ---------
+###0.10.0  (from mongodb-fixtures)
+- replace underscore to lodash
+- rename project to mongodb-fixtures
+- add npm test support
 
-###0.13.0  
+###0.13.0  (from pow-mongodb-fixtures)
 - Update mongodb driver to 2.0.x  
 - Updated `collection.insert` with `collection.insertMany` - the former is marked for deprecation in version 3.x  
 - Move to Lo-Dash from Underscore

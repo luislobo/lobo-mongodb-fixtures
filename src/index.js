@@ -3,9 +3,9 @@ var fs       = require('fs'),
     url      = require('url'),
     path     = require('path'),
     mongo    = require('mongodb'),
-    ObjectID = mongo.ObjectId,
+    ObjectID = require('bson').ObjectID,
     async    = require('async'),
-    _        = require('underscore'),
+    _        = require('lodash'),
     basePath = path.dirname(module.parent.filename);
 
 
@@ -32,7 +32,7 @@ exports.createObjectId = function(id) {
  */
 exports.connect = function(db, options) {
   return new Loader(db, options);
-}
+};
 
 
 
