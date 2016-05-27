@@ -1,6 +1,5 @@
-[![Build Status](https://travis-ci.org/luislobo/lobo-mongodb-fixtures.svg?branch=master)](https://travis-ci.org/luislobo/lobo-mongodb-fixtures)
-
 #lobo-mongodb-fixtures
+[![NPM Version](https://badge.fury.io/js/lobo-mongodb-fixtures.png)](https://badge.fury.io/js/lobo-mongodb-fixtures) [![Build Status](https://travis-ci.org/luislobo/lobo-mongodb-fixtures.png?branch=master)](https://travis-ci.org/luislobo/lobo-mongodb-fixtures) [![Coverage Status](https://coveralls.io/repos/luislobo/lobo-mongodb-fixtures/badge.png?branch=master)](https://coveralls.io/r/luislobo/lobo-mongodb-fixtures?branch=master) [![Code Climate](https://codeclimate.com/github/luislobo/lobo-mongodb-fixtures.png)](https://codeclimate.com/github/luislobo/lobo-mongodb-fixtures)
 
 This is a forked version of [pow-mongodb-fixtures](https://github.com/powmedia/pow-mongodb-fixtures), that merges all other forks into this one, trying to keep
 it up to date.
