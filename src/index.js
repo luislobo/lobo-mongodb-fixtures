@@ -191,7 +191,11 @@ Loader.prototype.clear = function(collectionNames, cb) {
       if (results.collectionNames) {
         async.forEach(results.collectionNames, function(name, cb) {
           var collection = results.db.collection(name);
-          collection.remove({},null,cb);
+
+          collection.remove({}, function(err) {
+            err = (err && err.message === 'ns not found') ? null : err;
+            cb(err);
+          });
         }, cb);
       } else { cb(); }
     }
