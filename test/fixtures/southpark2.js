@@ -1,4 +1,8 @@
 exports.southpark = {
-	stan: { name: 'Stan' },
-	towelie: { name: 'Towelie' }
+  stan: {
+    name: 'Stan'
+  },
+  towelie: {
+    name: 'Towelie'
+  }
 };

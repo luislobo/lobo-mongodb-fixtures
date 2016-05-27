@@ -1,0 +1,5 @@
+assets/dependencies/**/*.js
+config/local.js
+shippable
+.tmp/**/*.js
+www/**/*.js

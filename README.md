@@ -1,24 +1,28 @@
 [![Build Status](https://travis-ci.org/luislobo/lobo-mongodb-fixtures.svg?branch=master)](https://travis-ci.org/luislobo/lobo-mongodb-fixtures)
 
-lobo-mongodb-fixtures
-=================
+#lobo-mongodb-fixtures
 
-[![Build Status](https://travis-ci.org/CoorpAcademy/mongo-fixme.svg?branch=master)](https://travis-ci.org/CoorpAcademy/mongo-fixme)
-
-This is a forked version of mongo-fixme
+This is a forked version of [pow-mongodb-fixtures](https://github.com/powmedia/pow-mongodb-fixtures), that merges all other forks into this one, trying to keep
+it up to date.
 
 Simple fixture loader for MongoDB on NodeJS.  Makes managing relationships between documents easier.
 
-Fixtures can be in one file, or divided up into separate files for organisation 
+Fixtures can be in one file, or divided up into separate files for organisation
 (e.g. one file per model)
 
 The fixture files must export objects which are keyed by the MongoDB collection name, each
 containing the data for documents within that.
 
-FOR EXAMPLE:
+##Installation
+
+```sh
+npm install lobo-mongodb-fixtures
+```
+
+##Examples
 With the file below, 3 documents will be inserted into the 'users' collection and 2 into the 'businesses' collection:
 
-```js
+```javascript
 //fixtures.js
 exports.users = [
     { name: 'Gob' },
@@ -34,7 +38,7 @@ exports.businesses = [
 
 You can also load fixtures as an object where each document is keyed, in case you want to reference another document. This example uses the included `createObjectId` helper:
 
-```js
+```javascript
 //users.js
 var id = require('lobo-mongodb-fixtures').createObjectId;
 
@@ -55,8 +59,7 @@ var users = exports.users = {
 }
 ```
 
-CLI usage
-=========
+##CLI usage
 
 A CLI program is included for quickly loading fixture files. To use it install the module globally:
 
@@ -74,11 +77,9 @@ mongofixtures <dbname> <fixture file>
 mongofixtures appdb fixtures/users.js
 ```
 
-API
-===
+##API
 
-connect(dbname, options)
-------------------------
+###`connect(dbname, options)`
 
 Returns a new Loader instance, configured to interact with a certain database.
 
@@ -92,7 +93,7 @@ Options:
 
 Usage:
 
-```js
+```javascript
 var fixtures = require('lobo-mongodb-fixtures').connect('dbname');
 
 var fixtures2 = require('lobo-mongodb-fixtures').connect('dbname', {
@@ -101,12 +102,11 @@ var fixtures2 = require('lobo-mongodb-fixtures').connect('dbname', {
 });
 ```
 
-load(data, callback)
---------------------
+###`load(data, callback)`
 
 Adds documents to the relevant collection. If the collection doesn't exist it will be created first.
 
-```js
+```javascript
 var fixtures = require('lobo-mongodb-fixtures').connect('mydb');
 
 //Objects
@@ -124,12 +124,11 @@ fixtures.load(__dirname + '/fixtures/users.js', callback);
 fixtures.load(__dirname + '/fixtures', callback);
 ```
 
-clear(callback)
----------------
+###`clear(callback)`
 
 Clears existing data.
 
-```js
+```javascript
 fixtures.clear(function(err) {
     //Drops the database
 });
@@ -143,18 +142,15 @@ fixtures.clear(['foo', 'bar'], function(err) {
 });
 ```
 
-clearAllAndLoad(data, callback)
-----------------------------
+###`clearAllAndLoad(data, callback)`
 
 Drops the database (clear all collections) and loads data.
 
-
-clearAndLoad(data, callback)
-----------------------------
+###`clearAndLoad(data, callback)`
 
 Clears the collections that have documents in the `data` that is passed in, and then loads data.
 
-```js
+```javascript
 var data = { users: [...] };
 
 fixtures.clearAndLoad(data, function(err) {
@@ -162,13 +158,12 @@ fixtures.clearAndLoad(data, function(err) {
 });
 ```
 
-addModifier(callback)
----------------------
+###`addModifier(callback)`
 
 Adds a modifier (function) which gets called for each document that is to be inserted. The signature of this function
 should be:
 
-```js
+```javascript
     (collectionName, document, callback)
 ```
 
@@ -178,7 +173,7 @@ should be:
 
 Modifiers are chained in the order in which they're added. For example:
 
-```js
+```javascript
 var data = { users: [...] };
 
 // this modifier will get called first
@@ -199,48 +194,3 @@ fixtures.load(data, function(err) {
     // each loaded data item will have the createdAt and updatedAt keys set.
 });
 ```
-
-Installation
-------------
-
-```sh
-	npm install lobo-mongodb-fixtures
-```
-
-Changelog
----------
-###0.10.0  (from mongodb-fixtures)
-- replace underscore to lodash
-- rename project to mongodb-fixtures
-- add npm test support
-
-###0.13.0  (from pow-mongodb-fixtures)
-- Update mongodb driver to 2.0.x  
-- Updated `collection.insert` with `collection.insertMany` - the former is marked for deprecation in version 3.x  
-- Move to Lo-Dash from Underscore
-
-###0.10.0
-- Update mongodb driver to 1.3.x
-- Add ability to connect with URI
-- Make safe mode the default
-
-###0.8.1
-- Add mongofixtures CLI program
-
-###0.7.1
-- Add 'safe' option (donnut)
-
-###0.7.0
-- Add user and password options for connecting to authenticated/remote DBs
-
-###0.6.4
-- Add username and password connect options
-
-###0.6.3
-- Make clear be safe
-
-###0.6.2
-- Windows fixes (samitny)
-
-###0.6.1
-- Ignore subdirectories (hiddentao)

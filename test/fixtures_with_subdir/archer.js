@@ -1,5 +1,7 @@
-exports.archer = [
-	{ name: 'Sterling' },
-	{ name: 'Lana' },
-	{ name: 'Cheryl' }
-];
+exports.archer = [{
+  name: 'Sterling'
+}, {
+  name: 'Lana'
+}, {
+  name: 'Cheryl'
+}];

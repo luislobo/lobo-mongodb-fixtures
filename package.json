@@ -23,10 +23,26 @@
     "lodash": "~4.13.1"
   },
   "devDependencies": {
-    "nodeunit": "~0.9.1"
+    "nodeunit": "~0.9.1",
+    "chai": "3.5.0",
+    "chai-as-promised": "5.3.0",
+    "dirty-chai": "1.2.2",
+    "eslint": "2.8.0",
+    "grunt": "1.0.1",
+    "grunt-contrib-jshint": "1.0.0",
+    "grunt-eslint": "18.1.0",
+    "grunt-force-task": "2.0.0",
+    "grunt-mocha-istanbul": "4.0.2",
+    "grunt-mocha-test": "0.12.7",
+    "include-all": "0.1.6",
+    "istanbul": "0.4.3",
+    "js-beautify": "1.6.2",
+    "jshint": "2.9.1",
+    "jshint-stylish": "2.1.0"
   },
   "main": "src/index",
   "scripts": {
-    "test": "node_modules/.bin/nodeunit test"
+    "test": "node_modules/.bin/nodeunit test",
+    "js-beautify": "find -type f -name '*.js' ! -path './node_modules/*' -print0 | xargs -0 node ./node_modules/js-beautify/js/bin/js-beautify.js -r | awk  '!/unchanged/'"
   }
 }
