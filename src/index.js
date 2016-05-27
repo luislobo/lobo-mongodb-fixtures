@@ -191,8 +191,7 @@ Loader.prototype.clear = function(collectionNames, cb) {
       if (results.collectionNames) {
         async.forEach(results.collectionNames, function(name, cb) {
           var collection = results.db.collection(name);
-
-          collection.drop(cb);
+          collection.remove({},null,cb);
         }, cb);
       } else { cb(); }
     }
@@ -217,7 +216,7 @@ Loader.prototype.clearAllAndLoad = function(fixtures, cb) {
     self.load(fixtures, function(err) {
       cb(err);
     });
-	});
+    });
 };
 
 
@@ -241,7 +240,7 @@ Loader.prototype.clearAndLoad = function(fixtures, cb) {
       if (err) return cb(err);
 
       _loadData(self, objData, cb);
-  	});
+    });
   });
 };
 
@@ -320,15 +319,15 @@ var _close = function(loader, cb) {
  * @api private
  */
 var _loadData = function(loader, data, cb) {
-	cb = cb || noop;
+    cb = cb || noop;
 
-	var collectionNames = Object.keys(data);
+    var collectionNames = Object.keys(data);
 
-	_connect(loader, function(err, db) {
-		if (err) return cb(err);
+    _connect(loader, function(err, db) {
+        if (err) return cb(err);
 
-		async.forEach(collectionNames, function(collectionName, cbForEachCollection) {
-			var collectionData = data[collectionName];
+        async.forEach(collectionNames, function(collectionName, cbForEachCollection) {
+            var collectionData = data[collectionName];
 
       //Convert object to array
       var items;
@@ -366,8 +365,8 @@ var _loadData = function(loader, data, cb) {
           collection.insertMany(modifiedItems, { safe: true }, cbForEachCollection);
         });
       });
-		}, cb);
-	});
+        }, cb);
+    });
 };
 
 
