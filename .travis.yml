@@ -1,8 +1,8 @@
 language: node_js
 node_js:
-  - 4
-  - 0.12
-  - 0.10
+- 4
+- 0.12
+- 0.1
 sudo: false
 cache:
   directories:
@@ -12,4 +12,7 @@ services:
 install:
 - npm install
 after_script:
-  - npm run coveralls
+- npm run coveralls
+env:
+  global:
+    secure: pIsLNHiDDbWvgZ91LMEEkuR/GGu5EJO4taBgvMP/7gblKPV1BHXT9WIGMrPVJrTdYvBaD28hSm4oYosXW1emkmBHCCsOlG5sdyi96t1H+8modqj5qFXTPcZIK5xpprOIpNckKDqDXFPop5djO3lbMCw3xK95ndMOp4K75PGfrnl73zT6GXocStM0fviqtX3vVBBRfkM2M27g6t9Zz0jkYfYCaBYosw5O5MvYxjTImtGQkhAf6FIMQ72lWA0aAERXvfbV1OSWFnmQ6H1sJ88kZh5yRDeKHCIJVmBwqjRGfyvLtVmAICXL6CaBqk6SDadzvIVT/lKiKSJVhc66L5wQ270kid40aWYZ9TJJr0YgQWE6neUUciAomLO203tBGQL6G2PZ82G4lMP3rI5rnWcDgUgZCmxbbj4flo01Xt6y0qCw/fnEOwohfkNTsiEoVNOdcF7VnqZUAj2buR1RlFmB4wu3EeZEFkzApN9IvwKgbAoWILIwQIOgGpa8rN4wtFoy2slP3puQJ+iavxJRs9KZfsLSBxwfgHD5qv7QrREw6UsO8B/Bwt0edH1DHyrAP0TyirB0jEu6KQYo85xV0K/AkcNAhtohQXROgCXiFjtnl3qoPcwIqAs7IX4Y9W4FZ9u8ZiwHd0AmPCkGy+7fn+oR7c4R7y/+QFvkGa6regjPWRg=
