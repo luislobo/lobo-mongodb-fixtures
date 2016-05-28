@@ -1,5 +1,5 @@
 {
-  "author": "Charles Davison <charlie@powmedia.co.uk>",
+  "author": "Luis Lobo Borobia <luislobo@gmail.com>",
   "name": "lobo-mongodb-fixtures",
   "description": "Easy JSON fixture loading for MongoDB.  Makes managing document relationships easier. MERGES ALL FORKS OF `pow-mongodb-fixtures` INTO THIS ONE",
   "version": "1.0.0",
@@ -18,15 +18,11 @@
     "async": "~2.0.0-rc.5",
     "bson": "~0.4.23",
     "mongodb": "~2.1.20",
-    "nodeunit": "~0.9.1",
     "optimist": "~0.6.1",
     "lodash": "~4.13.1"
   },
   "devDependencies": {
-    "chai": "3.5.0",
-    "chai-as-promised": "5.3.0",
     "coveralls": "^2.11.9",
-    "dirty-chai": "1.2.2",
     "eslint": "2.2.0",
     "grunt": "1.0.1",
     "grunt-contrib-jshint": "1.0.0",
