@@ -1,5 +1,8 @@
 #lobo-mongodb-fixtures
-[![NPM Version](https://badge.fury.io/js/lobo-mongodb-fixtures.png)](https://badge.fury.io/js/lobo-mongodb-fixtures) [![Build Status](https://travis-ci.org/luislobo/lobo-mongodb-fixtures.png?branch=master)](https://travis-ci.org/luislobo/lobo-mongodb-fixtures) [![Coverage Status](https://coveralls.io/repos/luislobo/lobo-mongodb-fixtures/badge.png?branch=master)](https://coveralls.io/r/luislobo/lobo-mongodb-fixtures?branch=master) [![Code Climate](https://codeclimate.com/github/luislobo/lobo-mongodb-fixtures.png)](https://codeclimate.com/github/luislobo/lobo-mongodb-fixtures)
+[![NPM Version](https://badge.fury.io/js/lobo-mongodb-fixtures.png)](https://badge.fury.io/js/lobo-mongodb-fixtures)
+[![Build Status](https://travis-ci.org/luislobo/lobo-mongodb-fixtures.png?branch=master)](https://travis-ci.org/luislobo/lobo-mongodb-fixtures)
+[![Code Climate](https://codeclimate.com/github/luislobo/lobo-mongodb-fixtures/badges/gpa.svg)](https://codeclimate.com/github/luislobo/lobo-mongodb-fixtures)
+[![Test Coverage](https://codeclimate.com/github/luislobo/lobo-mongodb-fixtures/badges/coverage.svg)](https://codeclimate.com/github/luislobo/lobo-mongodb-fixtures/coverage)
 
 This is a forked version of [pow-mongodb-fixtures](https://github.com/powmedia/pow-mongodb-fixtures), that merges all other forks into this one, trying to keep
 it up to date.
