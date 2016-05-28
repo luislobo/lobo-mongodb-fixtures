@@ -680,6 +680,6 @@ exports['exit'] = {
       db.close(function () {
         process.exit();
       });
-    });
+    }, 100);
   }
 };
